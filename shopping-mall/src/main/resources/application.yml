@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:8086}
+  port: ${SERVER_PORT:}
 management:
   health:
     elasticsearch:
@@ -25,9 +25,9 @@ spring:
       max-file-size: 5MB
       max-request-size: 10MB
   datasource:
-    url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3306}/${DATABASE_NAME:shopping_mall}?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
-    username: ${DATABASE_USERNAME:root}
-    password: ${DATABASE_PASSWORD:22101020304}
+    url: jdbc:mysql://${DATABASE_HOST:}:${DATABASE_PORT:}/${DATABASE_NAME:}?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${DATABASE_USERNAME:}
+    password: ${DATABASE_PASSWORD:}
     driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:
@@ -35,21 +35,21 @@ spring:
       schema-locations: "classpath:schema.sql"
   data:
     redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
+      host: ${REDIS_HOST:}
+      port: ${REDIS_PORT:}
       password: ${REDIS_PASSWORD:}
-      database: ${REDIS_DATABASE:0}
+      database: ${REDIS_DATABASE:}
       timeout: 3000ms
   rabbitmq:
-    host: ${RABBITMQ_HOST:localhost}
-    port: ${RABBITMQ_PORT:5672}
-    username: ${RABBITMQ_USERNAME:guest}
-    password: ${RABBITMQ_PASSWORD:guest}
-    virtual-host: ${RABBITMQ_VIRTUAL_HOST:/}
+    host: ${RABBITMQ_HOST:}
+    port: ${RABBITMQ_PORT:}
+    username: ${RABBITMQ_USERNAME:}
+    password: ${RABBITMQ_PASSWORD:}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST:}
     ssl:
-      enabled: ${RABBITMQ_SSL_ENABLED:false}
+      enabled: ${RABBITMQ_SSL_ENABLED:}
   elasticsearch:
-    uris: ${ELASTICSEARCH_URL:http://localhost:9200}
+    uris: ${ELASTICSEARCH_URL:}
     username: ${ELASTICSEARCH_USERNAME:}
     password: ${ELASTICSEARCH_PASSWORD:}
 
@@ -68,11 +68,11 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 canal:
-  host: ${CANAL_HOST:localhost}
-  port: ${CANAL_PORT:11111}
-  destination: ${CANAL_DESTINATION:example}
-  username: ${CANAL_USERNAME:canal}
-  password: ${CANAL_PASSWORD:canal}
+  host: ${CANAL_HOST:}
+  port: ${CANAL_PORT:}
+  destination: ${CANAL_DESTINATION:}
+  username: ${CANAL_USERNAME:}
+  password: ${CANAL_PASSWORD:}
 
 logging:
   level:
