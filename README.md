@@ -26,3 +26,34 @@ A full-stack e-commerce platform built with React, TypeScript, and Spring Boot, 
 - **Idempotency:** Redis-based request deduplication, database unique constraints, and SHA-256 request fingerprints.
 - **Inventory Consistency:** Conditional SQL updates, distributed locks, and post-transaction Redis compensation.
 - **Search Synchronization:** Canal-based MySQL Binlog consumption for asynchronous Elasticsearch indexing.
+
+## Local Setup
+
+### Prerequisites
+
+- JDK 17, Maven
+- Node.js
+- Running services: MySQL, Redis, RabbitMQ (flash sale only), Elasticsearch (search only), Canal (search sync)
+
+### Backend
+
+1. Create `shopping_mall/.env` with the variables referenced in `application.yml` (MySQL, Redis, RabbitMQ, Elasticsearch, JWT, etc.).
+2. Create the `shopping_mall` database — `schema.sql` creates tables on startup but not the database itself.
+3. Run:
+
+```bash
+cd shopping-mall
+mvn spring-boot:run
+```
+
+Backend runs on `http://localhost:8086`; Swagger UI at `http://localhost:8086/swagger-ui/index.html`.
+
+### Frontend
+
+```bash
+cd shopping-mall-fe
+npm install
+npm run dev
+```
+
+Runs on `http://localhost:5173` and proxies `/api/*` to the backend.
