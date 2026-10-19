@@ -1,0 +1,309 @@
+:root {
+  font-family:
+    Inter,
+    "DM Sans",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: #f2f5fb;
+  background: #070b13;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --ink: #f2f5fb;
+  --muted: #a8b4c9;
+  --blue: #a9d8ff;
+  --cyan: #78deff;
+  --line: rgba(174, 199, 238, 0.18);
+  --panel: #0a1322;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: #070b13;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  color: inherit;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #b8e3ff;
+  outline-offset: 3px;
+}
+::selection {
+  background: rgba(136, 204, 255, 0.32);
+  color: white;
+}
+.app-frame {
+  position: relative;
+  min-height: 100vh;
+  background: #070b13;
+  isolation: isolate;
+}
+.app-frame:before {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  content: "";
+  background-image:
+    linear-gradient(180deg, rgba(4, 9, 18, 0.63), rgba(4, 9, 18, 0.78) 42%, #070b13 96%),
+    url("/assets/cart/cyberpunk-city.png");
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.8;
+}
+.app-frame:after {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: radial-gradient(ellipse at 50% 18%, rgba(48, 94, 156, 0.11), transparent 57%);
+  pointer-events: none;
+}
+.app-topbar {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  min-height: 78px;
+  padding: 0 clamp(20px, 5vw, 76px);
+  border-bottom: 1px solid rgba(189, 211, 245, 0.12);
+  background: rgba(4, 9, 18, 0.59);
+  backdrop-filter: blur(15px);
+}
+.app-brand {
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: 25px;
+  letter-spacing: 0.26em;
+  font-weight: 500;
+}
+.app-brand-note {
+  margin-left: 14px;
+  color: #9daec5;
+  font-size: 8px;
+  line-height: 1.45;
+  letter-spacing: 0.15em;
+}
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.1vw, 34px);
+  margin-left: auto;
+}
+.app-nav a,
+.nav-logout,
+.nav-user {
+  position: relative;
+  color: #b0bdd1;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+.app-nav a.active,
+.app-nav a:hover {
+  color: #f4f8ff;
+}
+.app-nav a.active:after {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: #90caff;
+  box-shadow: 0 0 9px rgba(110, 183, 255, 0.8);
+}
+.nav-user {
+  padding-left: 18px;
+  border-left: 1px solid var(--line);
+  color: #e4edf9;
+}
+.nav-logout {
+  padding: 8px 10px;
+  border: 1px solid rgba(151, 187, 239, 0.3);
+  background: transparent;
+}
+.nav-logout:hover {
+  border-color: #b4ddff;
+  color: white;
+}
+.mobile-menu-toggle {
+  display: none;
+}
+.module-placeholder {
+  width: min(1140px, calc(100% - 44px));
+  min-height: 70vh;
+  margin: 0 auto;
+  padding: 12vh 0;
+}
+.module-placeholder h1,
+.access-denied h1 {
+  max-width: 700px;
+  margin: 17px 0;
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(42px, 7vw, 76px);
+  letter-spacing: -0.02em;
+}
+.module-placeholder > p:not(.eyebrow),
+.access-denied > p:not(.eyebrow) {
+  color: #aab7cb;
+  line-height: 1.7;
+}
+.eyebrow {
+  color: #9fcaf2;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+.outline-button,
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  margin-top: 20px;
+  padding: 0 16px;
+  border: 1px solid rgba(168, 208, 255, 0.45);
+  background: rgba(8, 20, 38, 0.68);
+  color: #d9eaff;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+.outline-button:hover,
+.button-link:hover {
+  border-color: #b6e2ff;
+  background: rgba(34, 66, 104, 0.4);
+}
+.access-denied {
+  width: min(760px, calc(100% - 36px));
+  min-height: 80vh;
+  margin: auto;
+  padding-top: 16vh;
+}
+.state-panel {
+  display: flex;
+  min-height: 180px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 25px;
+  border: 1px solid rgba(144, 185, 244, 0.23);
+  background: rgba(7, 16, 30, 0.82);
+  color: #aebcd1;
+  text-align: center;
+}
+.state-panel strong {
+  color: #e9f1fc;
+  font-size: 12px;
+  letter-spacing: 0.13em;
+}
+.state-panel p {
+  max-width: 480px;
+  margin: 0;
+  color: #8d9cb2;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.state-error strong {
+  color: #ffb5c1;
+}
+.state-spinner {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(168, 212, 255, 0.22);
+  border-top-color: #a8dcff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+.empty-mark {
+  color: #8ecfff;
+  font-size: 25px;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 760px) {
+  .app-topbar {
+    min-height: 68px;
+    padding: 0 17px;
+  }
+  .app-brand {
+    font-size: 21px;
+  }
+  .app-brand-note {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: block;
+    margin-left: auto;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    background: rgba(9, 21, 39, 0.7);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  .app-nav {
+    position: absolute;
+    top: 68px;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 9px 17px 16px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(5, 11, 21, 0.97);
+    backdrop-filter: blur(15px);
+  }
+  .app-nav.is-open {
+    display: flex;
+  }
+  .app-nav a,
+  .nav-user,
+  .nav-logout {
+    padding: 14px 5px;
+    border-bottom: 1px solid rgba(160, 190, 231, 0.1);
+  }
+  .app-nav a.active:after {
+    display: none;
+  }
+  .nav-user {
+    border-left: 0;
+  }
+  .nav-logout {
+    text-align: left;
+  }
+  .module-placeholder {
+    width: calc(100% - 34px);
+  }
+}

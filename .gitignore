@@ -1,0 +1,63 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# Local tooling
+.claude/
+
+# ---- Backend (shopping-mall: Java / Maven / Spring Boot) ----
+HELP.md
+
+# Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# Local tool caches
+.xcodemap/
+
+# ---- Frontend (shopping-mall-fe: Node / Vite) ----
+node_modules/
+dist/
+*.tsbuildinfo
+
+# ---- Environment ----
+.env
+.env.*
+!.env.example
+
+# ---- Logs ----
+logs/
+*.log
+
+# ---- Temporary ----
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Accidental copy of a Windows local Maven repository
+D:\software\bin\Maven\repository/

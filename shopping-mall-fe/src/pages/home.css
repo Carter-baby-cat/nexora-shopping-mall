@@ -1,0 +1,388 @@
+.portal-page {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  flex-direction: column;
+  overflow: hidden;
+  background: #07101e;
+  isolation: isolate;
+}
+
+.portal-art,
+.portal-grade,
+.portal-shade,
+.solar-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.portal-art {
+  z-index: -4;
+  background: url("/assets/homepage/nexora-inverted-neon-city.png") center center / cover no-repeat;
+}
+
+.portal-grade {
+  z-index: -3;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 14, 30, 0.04),
+    rgba(19, 16, 38, 0.02) 44%,
+    rgba(3, 9, 24, 0.24) 100%
+  );
+}
+
+.portal-shade {
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 8, 18, 0.18),
+      transparent 34%,
+      transparent 66%,
+      rgba(5, 8, 18, 0.16)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 8, 20, 0.15),
+      transparent 24%,
+      transparent 70%,
+      rgba(3, 8, 18, 0.45)
+    );
+}
+
+.solar-layer {
+  z-index: -2;
+  overflow: hidden;
+}
+
+.solar-layer::before,
+.solar-layer::after {
+  position: absolute;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.solar-layer::before {
+  top: 48.7%;
+  left: 50%;
+  width: min(1180px, 145vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 250, 232, 0.74) 0%,
+    rgba(255, 232, 190, 0.56) 2.5%,
+    rgba(255, 205, 148, 0.38) 8%,
+    rgba(255, 168, 128, 0.23) 18%,
+    rgba(241, 142, 157, 0.13) 34%,
+    rgba(160, 137, 255, 0.055) 52%,
+    transparent 72%
+  );
+  filter: blur(8px);
+  opacity: 0.92;
+  animation: solar-corona 7.2s ease-in-out infinite alternate;
+}
+
+.solar-layer::after {
+  top: 48.7%;
+  left: 50%;
+  width: min(100%, 1600px);
+  height: 1px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    90deg,
+    transparent 12%,
+    rgba(255, 158, 119, 0.025) 30%,
+    rgba(255, 195, 143, 0.1) 42%,
+    rgba(255, 228, 185, 0.38) 48%,
+    rgba(255, 250, 233, 0.82) 50%,
+    rgba(255, 213, 161, 0.34) 52%,
+    rgba(255, 158, 123, 0.075) 61%,
+    transparent 82%
+  );
+  box-shadow:
+    0 0 12px 2px rgba(255, 206, 159, 0.16),
+    0 0 34px 8px rgba(255, 160, 126, 0.075);
+  opacity: 0.9;
+}
+
+.solar-layer canvas {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.solar-fallback {
+  position: absolute;
+  top: 48.7%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff2c7;
+  box-shadow:
+    0 0 8px 3px rgba(255, 249, 222, 0.72),
+    0 0 26px 10px rgba(255, 206, 139, 0.36),
+    0 0 72px 28px rgba(255, 151, 119, 0.18),
+    0 0 174px 66px rgba(166, 129, 255, 0.08);
+}
+
+.solar-layer[data-webgl="ready"] .solar-fallback {
+  opacity: 0;
+}
+
+.portal-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px clamp(23px, 5vw, 76px);
+  color: #fff;
+}
+
+.portal-brand {
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.3em;
+}
+
+.portal-header > span {
+  color: rgba(244, 247, 255, 0.75);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+}
+
+.portal-world {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  width: min(600px, 90vw);
+  transform: translateX(-50%);
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 2px 18px rgba(2, 5, 15, 0.45);
+}
+
+.portal-merchant {
+  top: 20%;
+}
+
+.portal-buyer {
+  bottom: 21%;
+}
+
+.portal-eyebrow {
+  margin: 0;
+  color: rgba(243, 235, 223, 0.89);
+  font-size: 9px;
+  letter-spacing: 0.25em;
+}
+
+.portal-world h1 {
+  margin: 5px 0 0;
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: clamp(45px, 6.5vw, 78px);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: 0.18em;
+  transition:
+    color 0.35s ease,
+    text-shadow 0.35s ease,
+    transform 0.35s ease,
+    letter-spacing 0.35s ease;
+}
+
+.portal-merchant h1 {
+  color: #fff7e9;
+  text-shadow:
+    0 2px 4px rgba(28, 13, 9, 0.6),
+    0 0 16px rgba(255, 182, 112, 0.3);
+}
+
+.portal-buyer h1 {
+  color: #eff7ff;
+  text-shadow:
+    0 2px 4px rgba(4, 8, 22, 0.72),
+    0 0 16px rgba(117, 179, 255, 0.32);
+}
+
+.portal-world > p:not(.portal-eyebrow) {
+  margin: 8px 0 0;
+  color: rgba(246, 247, 253, 0.88);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.portal-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 27px;
+  margin-top: 16px;
+  padding: 11px 15px;
+  border: 1px solid rgba(238, 242, 255, 0.57);
+  background: rgba(12, 16, 30, 0.2);
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-shadow: none;
+  transition:
+    background 0.22s,
+    border-color 0.22s,
+    box-shadow 0.22s,
+    color 0.22s;
+}
+
+.portal-cta span {
+  font-size: 14px;
+}
+
+.portal-merchant .portal-cta:hover {
+  border-color: #ffcf9f;
+  background: rgba(92, 46, 27, 0.35);
+  box-shadow: 0 0 21px rgba(255, 149, 89, 0.45);
+  color: #fff5e8;
+}
+
+.portal-buyer .portal-cta:hover {
+  border-color: #b5dfff;
+  background: rgba(25, 54, 105, 0.42);
+  box-shadow: 0 0 21px rgba(103, 174, 255, 0.55);
+  color: #eff8ff;
+}
+
+.portal-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px clamp(23px, 5vw, 76px);
+  color: rgba(235, 240, 251, 0.7);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portal-merchant h1:hover,
+  .portal-merchant:has(.portal-cta:hover) h1,
+  .portal-merchant:has(.portal-cta:focus-visible) h1 {
+    color: #fff0ca;
+    transform: translateY(-2px);
+    letter-spacing: 0.24em;
+    text-shadow:
+      0 0 3px rgba(255, 246, 220, 1),
+      0 0 24px rgba(255, 199, 116, 0.96),
+      0 0 56px rgba(255, 148, 76, 0.72),
+      0 0 88px rgba(255, 133, 58, 0.34);
+  }
+
+  .portal-buyer h1:hover,
+  .portal-buyer:has(.portal-cta:hover) h1,
+  .portal-buyer:has(.portal-cta:focus-visible) h1 {
+    color: #dff2ff;
+    transform: translateY(-2px);
+    letter-spacing: 0.24em;
+    text-shadow:
+      0 0 3px rgba(232, 248, 255, 1),
+      0 0 24px rgba(139, 208, 255, 0.95),
+      0 0 56px rgba(85, 139, 255, 0.72),
+      0 0 88px rgba(46, 93, 218, 0.34);
+  }
+}
+
+@media (max-width: 650px) {
+  .portal-art {
+    min-width: 100%;
+    background-position: center;
+    background-size: auto 100%;
+  }
+
+  .portal-header {
+    padding: 17px 18px;
+  }
+
+  .portal-header > span {
+    font-size: 7px;
+  }
+
+  .portal-brand {
+    font-size: 18px;
+  }
+
+  .portal-merchant {
+    top: 30%;
+  }
+
+  .portal-buyer {
+    bottom: 30%;
+  }
+
+  .portal-world h1 {
+    font-size: clamp(39px, 11vw, 60px);
+  }
+
+  .portal-world > p:not(.portal-eyebrow) {
+    font-size: 10px;
+  }
+
+  .portal-eyebrow {
+    font-size: 7px;
+  }
+
+  .portal-cta {
+    margin-top: 10px;
+    padding: 9px 12px;
+    font-size: 8px;
+  }
+
+  .portal-footer {
+    padding: 10px 13px;
+    align-items: flex-end;
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 650px) and (max-height: 520px) {
+  .portal-merchant {
+    top: 20%;
+  }
+
+  .portal-buyer {
+    bottom: 20%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-world h1,
+  .portal-cta {
+    transition: none;
+  }
+
+  .solar-layer::before {
+    animation: none;
+  }
+}
+
+@keyframes solar-corona {
+  from {
+    opacity: 0.86;
+    scale: 0.98;
+  }
+  to {
+    opacity: 0.98;
+    scale: 1.035;
+  }
+}

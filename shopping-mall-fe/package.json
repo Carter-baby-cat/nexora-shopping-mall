@@ -1,0 +1,32 @@
+{
+  "name": "nexora-shopping-mall-fe",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --pretty",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"vite.config.ts\" \"index.html\" \"package.json\" \"tsconfig*.json\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"vite.config.ts\" \"index.html\" \"package.json\" \"tsconfig*.json\""
+  },
+  "dependencies": {
+    "axios": "1.19.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-router-dom": "7.18.1",
+    "three": "0.186.0",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.180.0",
+    "@vitejs/plugin-react": "6.0.3",
+    "prettier": "^3.9.10",
+    "typescript": "7.0.2",
+    "vite": "8.1.5"
+  }
+}

@@ -1,0 +1,10 @@
+.git
+.idea
+.vscode
+.env
+.env.*
+!.env.example
+target/*
+!target/shopping-mall-0.0.1-SNAPSHOT.jar
+*.log
+.DS_Store

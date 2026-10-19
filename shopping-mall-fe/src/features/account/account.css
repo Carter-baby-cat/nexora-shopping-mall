@@ -1,0 +1,709 @@
+.account-page {
+  position: relative;
+  min-height: calc(100vh - 78px);
+  overflow: hidden;
+  background-color: #040916;
+  background-image:
+    radial-gradient(ellipse 28% 46% at 34% 48%, rgba(68, 135, 255, 0.1), transparent 76%),
+    linear-gradient(
+      90deg,
+      rgba(2, 7, 17, 0.06),
+      rgba(2, 7, 17, 0.12) 43%,
+      rgba(2, 7, 17, 0.66) 61%,
+      rgba(2, 7, 17, 0.88)
+    ),
+    linear-gradient(180deg, rgba(2, 7, 17, 0.2), rgba(2, 7, 17, 0.02) 43%, rgba(2, 7, 17, 0.48)),
+    url("/assets/account/vault-neon-city.png");
+  background-position:
+    center,
+    center,
+    center,
+    center 48%;
+  background-size: cover;
+}
+
+.account-page-shell {
+  width: min(1500px, 100%);
+  min-height: calc(100vh - 78px);
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 62px) 42px;
+}
+
+.account-route-line {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(143, 183, 255, 0.15);
+  color: #a9bbd5;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+}
+
+.account-route-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  transform: rotate(45deg);
+  background: #82d8ff;
+  box-shadow: 0 0 9px #70c8ff;
+}
+
+.account-route-line > i {
+  position: relative;
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, #548dff, #b4baff);
+}
+
+.account-route-line > i:after {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  border-top: 1px solid #b4baff;
+  border-right: 1px solid #b4baff;
+  content: "";
+}
+
+.account-role-tag {
+  margin-left: auto;
+  color: #d2e2fb;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.account-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: clamp(38px, 6vh, 74px);
+}
+
+.account-heading-row,
+.account-panels {
+  width: min(550px, 48vw);
+}
+
+.account-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.account-eyebrow {
+  margin: 0 0 8px;
+  color: #9bb4d6;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+}
+
+.account-heading-row h1 {
+  margin: 0;
+  color: #f3f7ff;
+  font-size: clamp(30px, 3.2vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  text-shadow: 0 4px 20px rgba(2, 5, 14, 0.65);
+}
+
+.account-heading-row h1 span {
+  margin-left: 6px;
+  color: #a9d8ff;
+  font-weight: 400;
+}
+
+.account-refresh-button {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  border: 1px solid rgba(120, 174, 247, 0.45);
+  background: rgba(4, 13, 30, 0.76);
+  color: #d2e1f6;
+  cursor: pointer;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease;
+}
+
+.account-refresh-button:hover:not(:disabled) {
+  border-color: rgba(156, 220, 255, 0.85);
+  color: white;
+  box-shadow: 0 0 18px rgba(85, 159, 255, 0.23);
+}
+
+.account-refresh-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.account-refresh-button svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: #a1d9ff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.account-panels {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 13px;
+}
+
+.account-balance-panel,
+.account-recharge-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(117, 180, 255, 0.48);
+  background: linear-gradient(
+    140deg,
+    rgba(5, 15, 35, 0.9),
+    rgba(4, 11, 26, 0.94) 60%,
+    rgba(8, 16, 37, 0.92)
+  );
+  box-shadow:
+    inset 0 0 36px rgba(68, 137, 255, 0.08),
+    0 18px 48px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px);
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%);
+}
+
+.account-balance-panel:before,
+.account-recharge-panel:before {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 58%;
+  height: 1px;
+  background: linear-gradient(90deg, #a3e3ff, #8a9fff 45%, transparent);
+  content: "";
+}
+
+.account-balance-panel:after,
+.account-recharge-panel:after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(148, 203, 255, 0.035),
+    transparent 34% 76%,
+    rgba(114, 117, 255, 0.035)
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.account-balance-panel {
+  min-height: 218px;
+}
+
+.account-panel-topline {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(120, 174, 247, 0.19);
+  background: rgba(9, 25, 51, 0.4);
+  color: #c1d0e7;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.account-live-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #8ce1c6;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.account-live-state i {
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  background: #74e5c0;
+  box-shadow: 0 0 8px #4fe0b0;
+}
+
+.account-live-state.is-error {
+  color: #ffb7c5;
+}
+
+.account-live-state.is-error i {
+  background: #ff91a8;
+  box-shadow: 0 0 8px #ff718f;
+}
+
+.account-balance-content {
+  position: relative;
+  z-index: 2;
+  padding: 31px 25px 26px;
+}
+
+.account-balance-amount {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.account-balance-amount > span {
+  margin: 6px 8px 0 0;
+  color: #a5cfff;
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: 25px;
+}
+
+.account-balance-amount output {
+  color: #f2f8ff;
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: clamp(42px, 5.2vw, 60px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  text-shadow: 0 0 28px rgba(111, 173, 255, 0.24);
+}
+
+.account-balance-baseline {
+  display: flex;
+  width: min(420px, 100%);
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  color: #8297b6;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+.account-balance-baseline span {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, #84caff, rgba(129, 164, 255, 0.3), transparent);
+}
+
+.account-panel-corner {
+  position: absolute;
+  z-index: 3;
+  width: 11px;
+  height: 11px;
+  border-color: #a2dcff;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.account-panel-corner.top {
+  top: 0;
+  right: 0;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+
+.account-panel-corner.bottom {
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+.account-loading-overlay {
+  position: absolute;
+  z-index: 4;
+  inset: 43px 0 0;
+  display: grid;
+  place-items: center;
+  background: rgba(4, 11, 25, 0.32);
+}
+
+.account-loading-overlay span {
+  width: 27px;
+  height: 27px;
+  border: 1px solid rgba(130, 203, 255, 0.25);
+  border-top-color: #96d8ff;
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(84, 169, 255, 0.22);
+  animation: account-spin 0.8s linear infinite;
+}
+
+@keyframes account-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.account-balance-error {
+  position: absolute;
+  z-index: 5;
+  right: 15px;
+  bottom: 13px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 11px;
+  border: 1px solid rgba(255, 139, 166, 0.5);
+  background: rgba(48, 13, 35, 0.95);
+  color: #ffd5df;
+  font-size: 9px;
+}
+
+.account-balance-error button {
+  flex: 0 0 auto;
+  border: 0;
+  background: none;
+  color: #ffb5c5;
+  cursor: pointer;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.account-balance-error button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.account-recharge-panel {
+  min-height: 286px;
+  padding: 19px 23px 18px;
+}
+
+.account-recharge-heading {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 16px;
+}
+
+.account-section-mark {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  flex: 0 0 auto;
+  transform: rotate(45deg);
+  place-items: center;
+  border: 1px solid rgba(135, 194, 255, 0.6);
+  background: rgba(42, 87, 147, 0.19);
+  box-shadow: inset 0 0 13px rgba(85, 153, 255, 0.16);
+}
+
+.account-section-mark i {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #a8dfff;
+  box-shadow: 0 0 8px rgba(113, 197, 255, 0.7);
+}
+
+.account-recharge-heading h2 {
+  margin: 0;
+  color: #f2f6ff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.account-recharge-panel form {
+  position: relative;
+  z-index: 2;
+}
+
+.account-field-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  color: #c4d1e6;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.account-field-label span:last-child,
+.account-field-unit {
+  color: #849bbd;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+.account-amount-field {
+  display: flex;
+  height: 47px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid rgba(125, 180, 250, 0.45);
+  background: linear-gradient(110deg, rgba(7, 20, 44, 0.96), rgba(6, 14, 31, 0.92));
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.account-amount-field:focus-within {
+  border-color: #91d7ff;
+  box-shadow:
+    0 0 18px rgba(75, 155, 255, 0.18),
+    inset 0 0 12px rgba(100, 170, 255, 0.07);
+}
+
+.account-amount-field.invalid {
+  border-color: rgba(255, 131, 160, 0.8);
+  box-shadow: 0 0 12px rgba(255, 84, 128, 0.12);
+}
+
+.account-amount-field > span:first-child {
+  color: #a5d8ff;
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: 17px;
+}
+
+.account-amount-field input {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #f2f7ff;
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: 18px;
+}
+
+.account-amount-field input::placeholder {
+  color: #6e83a2;
+  opacity: 1;
+}
+
+.account-amount-error {
+  margin: 6px 0 0;
+  color: #ff9eb3;
+  font-size: 9px;
+}
+
+.account-quick-amounts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.account-quick-amounts button {
+  height: 31px;
+  border: 1px solid rgba(106, 151, 215, 0.34);
+  background: rgba(9, 23, 47, 0.72);
+  color: #bac9df;
+  cursor: pointer;
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: 9px;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.account-quick-amounts button:hover:not(:disabled),
+.account-quick-amounts button.active {
+  border-color: rgba(131, 205, 255, 0.78);
+  background: rgba(39, 83, 137, 0.45);
+  color: #f0f8ff;
+  box-shadow: inset 0 0 12px rgba(77, 157, 255, 0.15);
+}
+
+.account-quick-amounts button:disabled {
+  cursor: wait;
+  opacity: 0.5;
+}
+
+.account-submit-button {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  width: 100%;
+  height: 43px;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  margin-top: 15px;
+  padding: 0 13px;
+  clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%);
+  border: 1px solid #a2d8ff;
+  background: #8fcaff;
+  color: #071326;
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.account-submit-button:hover:not(:disabled) {
+  background: #a5d9ff;
+  box-shadow: 0 0 22px rgba(101, 178, 255, 0.24);
+}
+
+.account-submit-button:disabled {
+  cursor: wait;
+  opacity: 0.58;
+}
+
+.account-submit-button > span:last-child {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.account-form-status {
+  min-height: 18px;
+  margin-top: 6px;
+  color: #8de5c8;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.account-form-status.error {
+  color: #ff9eb3;
+}
+
+@media (max-width: 900px) {
+  .account-page {
+    background-position:
+      center,
+      center,
+      center,
+      38% center;
+  }
+
+  .account-page-shell {
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+
+  .account-heading-row,
+  .account-panels {
+    width: min(550px, 58vw);
+  }
+
+  .account-balance-amount output {
+    font-size: clamp(40px, 5vw, 54px);
+  }
+}
+
+@media (max-width: 680px) {
+  .account-page {
+    min-height: calc(100vh - 68px);
+    background-image:
+      radial-gradient(ellipse 34% 28% at 34% 44%, rgba(86, 164, 255, 0.15), transparent 74%),
+      linear-gradient(90deg, rgba(2, 7, 17, 0.3), rgba(2, 7, 17, 0.56)),
+      linear-gradient(180deg, rgba(2, 7, 17, 0.36), rgba(2, 7, 17, 0.2) 48%, rgba(2, 7, 17, 0.62)),
+      url("/assets/account/vault-neon-city.png");
+    background-position:
+      center,
+      center,
+      center,
+      34% center;
+  }
+
+  .account-page-shell {
+    min-height: calc(100vh - 68px);
+    padding: 0 16px 28px;
+  }
+
+  .account-route-line {
+    min-height: 50px;
+    font-size: 7px;
+  }
+
+  .account-role-tag {
+    font-size: 7px;
+  }
+
+  .account-content {
+    align-items: center;
+    padding-top: 30px;
+  }
+
+  .account-heading-row,
+  .account-panels {
+    width: min(100%, 540px);
+  }
+
+  .account-heading-row {
+    margin-bottom: 13px;
+  }
+
+  .account-heading-row h1 {
+    font-size: 30px;
+  }
+
+  .account-refresh-button {
+    min-height: 32px;
+    padding: 0 8px;
+    font-size: 7px;
+  }
+
+  .account-balance-panel {
+    min-height: 198px;
+  }
+
+  .account-balance-content {
+    padding: 28px 20px 22px;
+  }
+
+  .account-balance-amount output {
+    font-size: clamp(42px, 12vw, 56px);
+    letter-spacing: -0.045em;
+  }
+
+  .account-balance-amount > span {
+    margin-top: 5px;
+    font-size: 21px;
+  }
+
+  .account-recharge-panel {
+    min-height: 274px;
+    padding: 17px 19px 15px;
+  }
+}
+
+@media (max-width: 370px) {
+  .account-role-tag {
+    font-size: 6px;
+  }
+
+  .account-heading-row h1 {
+    font-size: 26px;
+  }
+
+  .account-balance-amount output {
+    font-size: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .account-loading-overlay span,
+  .account-page * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
